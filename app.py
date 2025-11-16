@@ -2,11 +2,14 @@ from flask import Flask, request, render_template
 import requests
 import pycountry
 import unicodedata
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 countries = sorted(pycountry.countries, key=lambda c: c.name)
 
-api_key = "69644e595248bbaaacb6a820b7e37e7a"
+load_dotenv()
+api_key = os.getenv("API_KEY")
 base_url = "https://api.openweathermap.org/data/2.5/weather?"
 
 def normalize_text(s):
