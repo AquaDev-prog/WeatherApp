@@ -37,7 +37,6 @@ body {
 /* Snow */
 .snowy-bg {
     background: linear-gradient(160deg, #e5e7eb, #9ca3af, #111827);
-    color: #0f172a;
 }
 
 /* Thunderstorm */
@@ -176,4 +175,5 @@ input:focus {
     font-size: 2.4rem;
     font-weight: 600;
     margin-bottom: 8px;
+
 }
