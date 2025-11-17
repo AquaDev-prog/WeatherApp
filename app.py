@@ -82,12 +82,12 @@ def home():
     if request.method == "POST":
         country_code = request.form.get("country", "").strip()
         city_raw = request.form.get("city", "").strip()
-        # city_name = normalize_text(city_raw)
+        city_name = normalize_text(city_raw)
 
         if not country_code or not city_name:
             error_message = "Please select a country and enter a city name."
         else:
-            result = get_weather(country_code, city_raw)
+            result = get_weather(country_code, city_name)
             if "error" in result:
                 error_message = result["error"]
             else:
@@ -104,5 +104,6 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
