@@ -20,7 +20,7 @@ def normalize_text(s):
 def get_weather(country_code, city_name):
     try:
         # Build URL
-        complete_url = f"{base_url}q={city_raw},{country_code}&units=metric&appid={api_key}"
+        complete_url = f"{base_url}q={city_name},{country_code}&units=metric&appid={api_key}"
         response = requests.get(complete_url, timeout=5)
         data = response.json()
     except requests.exceptions.RequestException:
@@ -87,7 +87,7 @@ def home():
         if not country_code or not city_name:
             error_message = "Please select a country and enter a city name."
         else:
-            result = get_weather(country_code, city_name)
+            result = get_weather(country_code, city_raw)
             if "error" in result:
                 error_message = result["error"]
             else:
@@ -104,4 +104,5 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
