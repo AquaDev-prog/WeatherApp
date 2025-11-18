@@ -7,6 +7,7 @@ import os
 
 app = Flask(__name__)
 countries = sorted(pycountry.countries, key=lambda c: c.name)
+port = int(os.getenv('PORT', 5000))
 
 load_dotenv()
 api_key = os.getenv("API_KEY")
@@ -102,8 +103,10 @@ def home():
     )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=port)
     app.run(debug=True)
+
 
 
 
